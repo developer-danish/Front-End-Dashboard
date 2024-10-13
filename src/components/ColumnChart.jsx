@@ -11,7 +11,7 @@ const ColumnChart = ({data}) => {
     const series = [{ name: 'Visitors', data: data.map((item) => item.visitors) }];
 
   return (
-    <Chart options={options} series={series} type="bar" height={360} />
+    <Chart options={options} series={series} type="bar" height={360} width='90%' />
   )
 }
 

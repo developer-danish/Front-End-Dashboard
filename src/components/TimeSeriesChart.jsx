@@ -2,30 +2,42 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 
 const TimeSeriesChart = ({data}) => {
-    const options = {
+    const chartOptions = {
         chart: {
-            id: 'timeseries',
-            zoom: { enabled: true },
-          },
-          xaxis: {
-            type: 'datetime',
-          },
-          yaxis: {
-            title: { text: 'Number of Visitors' },
-          },
-          stroke: {
-            curve: 'smooth'
+          type: 'line',
+          zoom: {
+            enabled: true
           }
-    };
-
-    const series = [
+        },
+        xaxis: {
+          type: 'datetime',
+          title: {
+            text: 'Date'
+          }
+        },
+        yaxis: {
+          title: {
+            text: 'Total Visitors'
+          }
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+          text: 'Total Visitors Over Time',
+          align: 'center'
+        }
+      };
+    
+      const chartSeries = [
         {
-            name: 'Visitors',
-            data: data.map((item) => [new Date(`${item.arrival_date_year}-${item.arrival_date_day_of_month}-${item.arrival_date_month}`).getTime(), item.adults + item.children + item.babies]),
-          },
-    ];
+          name: 'Total Visitors',
+          data: data
+        }
+      ];
+    
   return (
-    <Chart options={options} series={series} type="line" height={360} />
+    <Chart options={chartOptions} series={chartSeries} type="line" height={360} width='90%' />
   )
 }
 
